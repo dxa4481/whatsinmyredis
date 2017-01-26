@@ -1,0 +1,18 @@
+{
+  "name": "subscriber",
+  "version": "1.0.0",
+  "description": "websocket server that publishes data from redis",
+  "main": "subscriber.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "redis": "^2.6.5",
+    "socket.io": "^1.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node subscriber.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dylan Ayrey",
+  "license": "GPL-2.0"
+}

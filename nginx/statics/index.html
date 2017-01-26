@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body ng-app="redisApp" ng-controller="mainController">
+        <div style="height:100%; width:50%; float:left; font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 82%; overflow:scroll;">
+            <select ng-model="ipData.model">
+                <option ng-repeat="option in ipData.availableOptions" value="{{option}}">{{option}}</option>
+            </select>
+            <button ng-click="exfilData(ipData.model)">Whats in my redis?</button>
+            <h3>Redis contents appear below</h3>
+            <div id="myRedisContents"></div>
+        </div>
+        <div style="height:100%; width:50%; float:right; font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 82%; overflow:scroll;">
+            <button ng-click="encryptData(ipData.model, key); exfilData(ipData.model);">Ransomware myself</button>
+            <h3>Encryption Key</h3>
+            <div id="encryptionKey">{{key}}</div>
+        </div>
+    </body>
+</html>
