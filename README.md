@@ -39,29 +39,29 @@ Upgrade to Redis <3.2.7 and consider putting authentication on your redis, and [
 
 ## FAQ
 
-##### How does the latest version of redis fix this issue?
+#### How does the latest version of redis fix this issue?
 The latest version of Redis alieses the words POST and HOST to QUIT commands, this when incoming HTTP requests contain those words, they terminate the TCP connection.
 
-##### The site doesn't work for me, why?
+#### The site doesn't work for me, why?
 There are a number of reasons it may not work, some listed below
 + The site uses outbound port 11111 for the data exfiltration, this port may be blocked
 + The site utilizes redis commands introduced in 2.6.0 so older versions will fail
 + The website needs websocket support to work
 + Traffic may have knocked it over, I didn't do much load testing, I don't know what it can handle
 
-##### Why does my redis data look a little messed up?
+#### Why does my redis data look a little messed up?
 The way I collect and parse Redis keys is not perfect. This is mostly out of laziness.
 
-##### Why isn't there TLS on the site?
+#### Why isn't there TLS on the site?
 The site needs to make unencrypted requests to redis, and because mixed contents errors would get thrown otherwise, there is no TLS on the website
 
-##### Do you save any of the data?
+#### Do you save any of the data?
 No. The data is temperarily sent to a GCE server, which is used to send that data back to the client via websocket
 
-##### Why do you need to send the data back to the server?
+#### Why do you need to send the data back to the server?
 Once the malformed "HTTP" response is sent from the redis database to the browser, the browser throws a malformed HTTP response error.
 
-##### I messed up and encrypted data I need, what now?
+#### I messed up and encrypted data I need, what now?
 Fortunetly I'm using really bad crypto here, so you have some options. If you haven't refreshed, hit the encrypt button again, and it will XOR the redis contents with the same key, and your data will be recovered. The decryption key is also saved in the redis key "WIMREncryptionKey". If you encrypted the contents multiple times with multiple keys, there's still hope. If you know what any of the values in the database used to be, you can XOR that value with that current encrypted key to recover your new decryption key. 
 
 ## Special thanks
