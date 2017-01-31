@@ -49,6 +49,9 @@ There are a number of reasons it may not work, some listed below
 + The website needs websocket support to work
 + Traffic may have knocked it over, I didn't do much load testing, I don't know what it can handle
 
+##### Why does my redis data look a little messed up?
+The way I collect and parse Redis keys is not perfect. This is mostly out of laziness.
+
 ##### Why isn't there TLS on the site?
 The site needs to make unencrypted requests to redis, and because mixed contents errors would get thrown otherwise, there is no TLS on the website
 
