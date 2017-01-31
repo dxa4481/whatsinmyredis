@@ -54,4 +54,4 @@ Once the malformed "HTTP" response is sent from the redis database to the browse
 Fortunetly I'm using really bad crypto here, so you have some options. If you haven't refreshed, hit the encrypt button again, and it will XOR the redis contents with the same key, and your data will be recovered. The decryption key is also saved in the redis key "WIMREncryptionKey". If you encrypted the contents multiple times with multiple keys, there's still hope. If you know what any of the values in the database used to be, you can XOR that value with that current encrypted key to recover your new decryption key. 
 
 ## Special thanks
-After working with the lead Redis developer Antirez, the CSRF patch was backported to 3.2.7, he was very responsive and helpful!
+After working with the lead Redis developer [Antirez](https://github.com/antirez/), the CSRF patch was backported to 3.2.7, he was very responsive and helpful!
