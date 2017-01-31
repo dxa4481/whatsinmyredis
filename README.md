@@ -3,6 +3,8 @@ Redis <3.2.7 suffers from CSRF issues which allows an attacker to run arbitrary 
 [http://whatsinmyredis.com](http://whatsinmyredis.com)
 ![whatsinmyredis](https://i.imgur.com/KXxTPID.png)
 
+This release coincided with the release of redis 3.2.7 https://www.reddit.com/r/redis/comments/5r8wxn/redis_327_is_out_important_security_fixes_inside/
+
 ## How is Redis vulnerable to CSRF?
 
 Redis does not use HTTP to communicate, it uses its own redis ascii, newline delaminated protocol via TCP. One unfortunate property of this protocol is it does not terminate TCP connection when invalid commands are sent to it. This allows for a cleartext HTTP request to be sent to a listening Redis server. Redis will ignore the HTTP headers, and as soon as it sees a valid redis command in the body, it will execute it. Below is an example of running the migrate command on all keys in the redis store. 
