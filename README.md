@@ -31,11 +31,15 @@ Upgrade to Redis <3.2.7 and consider putting authentication on your redis, and [
 
 ## FAQ
 
+##### How does the latest version of redis fix this issue?
+The latest version of Redis alieses the words POST and HOST to QUIT commands, this when incoming HTTP requests contain those words, they terminate the TCP connection.
+
 ##### The site doesn't work for me, why?
 There are a number of reasons it may not work, some listed below
 + The site uses outbound port 11111 for the data exfiltration, this port may be blocked
 + The site utilizes redis commands introduced in 2.6.0 so older versions will fail
 + The website needs websocket support to work
++ Traffic may have knocked it over, I didn't do much load testing, I don't know what it can handle
 
 ##### Why isn't there TLS on the site?
 The site needs to make unencrypted requests to redis, and because mixed contents errors would get thrown otherwise, there is no TLS on the website
