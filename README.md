@@ -1,6 +1,14 @@
 ## Whatsinmyredis.com
-Redis <3.2.7 suffers from CSRF issues which allows an attacker to run arbitrary redis commands on local/internal redis instances. These attacks have been mitagated in the latest versions of redis. Demoed on this website is the ability to migrate all redis keys from an internal network to an attacker controlled server. Additionally, the ability to encrypt all of the contents of local redis instances is also demoed, which could be leveraged to ransomeware a person or company.
+Redis <3.2.7 suffers from CSRF issues which allows an attacker to run arbitrary redis commands on local/internal redis instances. These attacks have been mitagated in the latest versions of redis. 
+
+Demoed on this website is the ability to
+
++ Migrate all redis keys from an internal network to an attacker controlled server. 
++ Encrypt all of the contents of local redis instances, which could be leveraged to ransomeware a person or company.
+
 [http://whatsinmyredis.com](http://whatsinmyredis.com)
+
+
 ![whatsinmyredis](https://i.imgur.com/KXxTPID.png)
 
 This release coincided with the release of redis 3.2.7 https://www.reddit.com/r/redis/comments/5r8wxn/redis_327_is_out_important_security_fixes_inside/
