@@ -1,0 +1,25 @@
+version: '2'
+services:
+    nginx:
+        build: nginx
+        restart: always
+        ports:
+        - "80:80"
+        hostname: nginx
+    publisher:
+        build: publisher
+        restart: always
+        ports:
+        - "11111:11111"
+    redis:
+        build: redis
+        restart: always
+        hostname: redis
+        expose:
+        - "6379"
+    subscriber:
+        build: subscriber
+        restart: always
+        hostname: subscriber
+        expose:
+        - "3000"
